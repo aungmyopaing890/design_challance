@@ -56,85 +56,87 @@ class HomeView extends StatelessWidget {
                 elevation: 0,
                 iconTheme: const IconThemeData(color: Colors.black),
               ),
-              body: SingleChildScrollView(
-                scrollDirection: Axis.vertical,
-                child: Column(
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 25, vertical: 10),
-                      alignment: Alignment.centerLeft,
-                      child: const Text(
-                        "Nike Collection",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 20),
-                      ),
+              body: Column(
+                children: [
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 25, vertical: 10),
+                    alignment: Alignment.centerLeft,
+                    child: const Text(
+                      "Nike Collection",
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                     ),
-                    Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 25),
-                      alignment: Alignment.centerLeft,
-                      child: const Text(
-                        "Everything you need at just one place.",
-                        style: TextStyle(
-                            fontWeight: FontWeight.w500,
-                            fontSize: 16,
-                            color: Colors.grey),
-                      ),
+                  ),
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 25),
+                    alignment: Alignment.centerLeft,
+                    child: const Text(
+                      "Everything you need at just one place.",
+                      style: TextStyle(
+                          fontWeight: FontWeight.w500,
+                          fontSize: 16,
+                          color: Colors.grey),
                     ),
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 25, vertical: 10),
-                      child: TextField(
-                        cursorColor: Colors.grey.shade200,
-                        decoration: InputDecoration(
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(30.0),
-                            borderSide: BorderSide(
-                                color: Colors.grey.shade200, width: 0.0),
+                  ),
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 25, vertical: 10),
+                    child: TextField(
+                      cursorColor: Colors.grey.shade200,
+                      decoration: InputDecoration(
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(30.0),
+                          borderSide: BorderSide(
+                              color: Colors.grey.shade200, width: 0.0),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(30.0),
+                          borderSide: BorderSide(
+                              color: Colors.grey.shade200, width: 0.0),
+                        ),
+                        filled: true,
+                        fillColor: Colors.grey.shade200,
+                        suffixIcon: IconButton(
+                          icon: const Icon(
+                            Icons.search,
+                            color: Colors.grey,
                           ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(30.0),
-                            borderSide: BorderSide(
-                                color: Colors.grey.shade200, width: 0.0),
-                          ),
-                          filled: true,
-                          fillColor: Colors.grey.shade200,
-                          suffixIcon: IconButton(
-                            icon: const Icon(
-                              Icons.search,
-                              color: Colors.grey,
-                            ),
-                            onPressed: () {},
-                          ),
-                          hintText: 'Search here ..',
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(30.0),
-                          ),
+                          onPressed: () {},
+                        ),
+                        hintText: 'Search here ..',
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(30.0),
                         ),
                       ),
                     ),
-                    Container(
-                        margin: const EdgeInsets.symmetric(
-                            horizontal: 25, vertical: 5),
-                        height: 40,
-                        child: ListView(
-                          scrollDirection: Axis.horizontal,
-                          padding: const EdgeInsets.all(8),
-                          children: const <Widget>[
-                            TypeButtonWidget(Colors.black, Colors.white, "All"),
-                            TypeButtonWidget(
-                                Colors.white, Colors.black, "Jordan"),
-                            TypeButtonWidget(
-                                Colors.white, Colors.black, "Running"),
-                            TypeButtonWidget(
-                                Colors.white, Colors.black, "Golf"),
-                            TypeButtonWidget(
-                                Colors.white, Colors.black, "Casual"),
-                          ],
-                        )),
-                    ...model.products.map((e) => CardWidget(e))
-                  ],
-                ),
+                  ),
+                  Container(
+                      margin: const EdgeInsets.symmetric(
+                          horizontal: 25, vertical: 5),
+                      height: 40,
+                      child: ListView(
+                        scrollDirection: Axis.horizontal,
+                        padding: const EdgeInsets.all(8),
+                        children: const <Widget>[
+                          TypeButtonWidget(Colors.black, Colors.white, "All"),
+                          TypeButtonWidget(
+                              Colors.white, Colors.black, "Jordan"),
+                          TypeButtonWidget(
+                              Colors.white, Colors.black, "Running"),
+                          TypeButtonWidget(Colors.white, Colors.black, "Golf"),
+                          TypeButtonWidget(
+                              Colors.white, Colors.black, "Casual"),
+                        ],
+                      )),
+                  Expanded(
+                    child: ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: model.products.length,
+                        itemBuilder: (context, index) =>
+                            CardWidget(model.products[index])),
+                  )
+                ],
               ),
               bottomNavigationBar: BottomNavigationBar(
                 showSelectedLabels: false,
